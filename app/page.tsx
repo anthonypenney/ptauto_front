@@ -166,8 +166,9 @@ export default function Home() {
                 sizes="(max-width: 900px) 60vw, 260px"
               />
               <figcaption>
-                Lionel Wheeler on alignments. Same number on the bottom of
-                the ad &mdash; <strong>489&#8209;2282</strong>.
+                An ad in the Grand Falls Advertiser, 1971 &mdash; Same
+                number on the bottom of the ad &mdash;{" "}
+                <strong>489&#8209;2282</strong>.
               </figcaption>
             </figure>
 

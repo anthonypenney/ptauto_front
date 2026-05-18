@@ -77,8 +77,9 @@ const archiveItems = [
     sizes: "(max-width: 900px) 100vw, 33vw",
     caption: (
       <>
-        <strong>Front end service.</strong> Used cars, alignments, and Lionel
-        Wheeler on the same P&amp;T Auto ad.
+        <strong>Front end service.</strong> A listing in the Grand Falls
+        Advertiser, circa 1973 &mdash; Promoting our state-of-the-art
+        balancing and alignment and selection of used cars.
       </>
     )
   },
