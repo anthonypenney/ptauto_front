@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { LegacyArchive } from "./LegacyArchive";
 
 const phoneDisplay = "709 489 2282";
 const phoneHref = "tel:+17094892282";
@@ -26,12 +27,14 @@ export default function LegacyPage() {
               width={420}
               height={114}
               priority
+              quality={85}
             />
           </Link>
           <div className="topbar__nav">
+            <Link href="/">Home</Link>
             <Link href="/#services">Services</Link>
-            <Link href="/legacy">Legacy</Link>
             <Link href="/#visit">Visit</Link>
+            <Link href="/legacy">Legacy</Link>
           </div>
           <a className="topbar__call" href={phoneHref}>
             <span>Call the shop</span>
@@ -49,79 +52,7 @@ export default function LegacyPage() {
         </div>
       </header>
 
-      <section
-        className="archive archive--page"
-        aria-labelledby="archive-title"
-      >
-        <h2 className="sr" id="archive-title">
-          P&T Auto archive
-        </h2>
-
-        <figure className="archive__wide">
-          <div className="archive__wideImg">
-            <Image
-              src="/assets/photos/image copy 7.png"
-              alt="Full-page Deals on Wheels newspaper ad listing 1967-1971 used vehicles for sale at P&T Auto Limited, Lincoln Road, Grand Falls."
-              fill
-              priority
-              sizes="100vw"
-            />
-          </div>
-          <figcaption>
-            <em>Deals on Wheels</em> &mdash; a used-vehicle page the shop
-            ran in the early 1970s, with Orv Penney&apos;s name on the
-            bottom. A 1968 Pontiac Station Wagon went for $1,450.
-          </figcaption>
-        </figure>
-
-        <div className="wrap archive__row">
-          <figure className="clipping clipping--tall">
-            <div className="clipping__img">
-              <Image
-                src="/assets/photos/image copy 12.png"
-                alt="Penney & Thistle Auto Limited advertisement for American Motors and Renault sales behind Foodland on Lincoln Road."
-                fill
-                loading="eager"
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
-            </div>
-            <figcaption>
-              <strong>1969.</strong> The original name on the door, before
-              the partnership wound down.
-            </figcaption>
-          </figure>
-          <figure className="clipping clipping--tall">
-            <div className="clipping__img">
-              <Image
-                src="/assets/photos/image copy 8.png"
-                alt="Orv Penney joins American Motors Winning Team advertisement featuring the AMC Javelin."
-                fill
-                loading="eager"
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
-            </div>
-            <figcaption>
-              <strong>The Javelin years.</strong> AMC ran this when Orv
-              signed on.
-            </figcaption>
-          </figure>
-          <figure className="clipping clipping--wide">
-            <div className="clipping__img">
-              <Image
-                src="/assets/photos/image copy 10.png"
-                alt="Newspaper article announcing P&T Auto's move to the Windsor commercial-industrial area."
-                fill
-                loading="eager"
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
-            </div>
-            <figcaption>
-              <strong>The move to Windsor.</strong> Crossing the river into
-              the commercial-industrial area.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      <LegacyArchive />
 
       <footer className="foot">
         <div className="wrap foot__inner">
@@ -130,11 +61,13 @@ export default function LegacyPage() {
             alt="P&T Auto Limited"
             width={280}
             height={76}
+            quality={85}
           />
           <div className="foot__copy">
             <p>{address}</p>
             <p className="muted">
-              &copy; {year} P&amp;T Auto Limited. In Grand Falls since 1969.
+              &copy; {year}{" "}P&amp;T Auto Limited. Established in 1969,
+              incorporated in 1971.
             </p>
           </div>
         </div>

@@ -27,10 +27,11 @@ export default function Home() {
       <header className="hero">
         <div className="hero__bg" aria-hidden="true">
           <Image
-            src="/assets/photos/image.png"
+            src="/assets/photos/hero-shop-bay.png"
             alt=""
             fill
             priority
+            quality={75}
             sizes="100vw"
           />
         </div>
@@ -45,12 +46,14 @@ export default function Home() {
               width={420}
               height={114}
               priority
+              quality={85}
             />
           </a>
           <div className="topbar__nav">
+            <Link href="/">Home</Link>
             <a href="#services">Services</a>
-            <Link href="/legacy">Legacy</Link>
             <a href="#visit">Visit</a>
+            <Link href="/legacy">Legacy</Link>
           </div>
           <a className="topbar__call" href={phoneHref}>
             <span>Call the shop</span>
@@ -129,9 +132,10 @@ export default function Home() {
 
       <section className="baystrip" aria-hidden="true">
         <Image
-          src="/assets/photos/image copy.png"
+          src="/assets/photos/shop-bay-2-earle-street.png"
           alt=""
           fill
+          quality={70}
           sizes="100vw"
         />
         <div className="baystrip__veil" />
@@ -145,9 +149,10 @@ export default function Home() {
           <figure className="story__portrait">
             <div className="story__portraitImg">
               <Image
-                src="/assets/photos/image copy 5.png"
+                src="/assets/photos/orville-penney-counter.png"
                 alt="Orville Penney at the P&T Auto parts counter"
                 fill
+                quality={70}
                 sizes="(max-width: 900px) 100vw, 46vw"
               />
             </div>
@@ -173,10 +178,11 @@ export default function Home() {
 
             <figure className="story__clip">
               <Image
-                src="/assets/photos/image copy 11.png"
+                src="/assets/photos/archive-lionel-wheeler-alignment-ad.png"
                 alt="1970s advertisement: 'To have your car aligned and balanced see Lionel Wheeler at P&T Auto Ltd., Rear of Foodland, Lincoln Rd., Grand Falls. Phone 489-2282.'"
                 width={300}
                 height={580}
+                quality={70}
                 sizes="(max-width: 900px) 60vw, 260px"
               />
               <figcaption>
@@ -214,28 +220,28 @@ export default function Home() {
         <div className="today__grid">
           <figure className="today__a">
             <Image
-              src="/assets/photos/image copy 2.png"
+              src="/assets/photos/vehicle-jaguar-xk-red.png"
               alt="A red Jaguar XK convertible between the lifts."
               fill
-              loading="eager"
+              quality={70}
               sizes="(max-width: 900px) 100vw, 55vw"
             />
           </figure>
           <figure className="today__b">
             <Image
-              src="/assets/photos/image copy 4.png"
+              src="/assets/photos/vehicle-thunderbird-lift.png"
               alt="A late-1950s Ford Thunderbird up on the lift."
               fill
-              loading="eager"
+              quality={70}
               sizes="(max-width: 900px) 100vw, 45vw"
             />
           </figure>
           <figure className="today__c">
             <Image
-              src="/assets/photos/image copy 3.png"
+              src="/assets/photos/vehicle-thunderbird-tail.png"
               alt="The chrome tail section of a Thunderbird under the lift lights."
               fill
-              loading="eager"
+              quality={70}
               sizes="(max-width: 900px) 100vw, 45vw"
             />
           </figure>
@@ -246,10 +252,10 @@ export default function Home() {
         <div className="wrap visit__grid">
           <figure className="visit__photo">
             <Image
-              src="/assets/photos/image copy 6.png"
+              src="/assets/photos/shop-exterior-earle-street.png"
               alt="P&T Auto Limited storefront on Earle Street with cars parked out front."
               fill
-              loading="eager"
+              quality={70}
               sizes="(max-width: 900px) 100vw, 50vw"
             />
           </figure>
@@ -299,11 +305,13 @@ export default function Home() {
             alt="P&T Auto Limited"
             width={280}
             height={76}
+            quality={85}
           />
           <div className="foot__copy">
             <p>{address}</p>
             <p className="muted">
-              &copy; {year} P&amp;T Auto Limited. In Grand Falls since 1969.
+              &copy; {year}{" "}P&amp;T Auto Limited. Established in 1969,
+              incorporated in 1971.
             </p>
           </div>
         </div>
