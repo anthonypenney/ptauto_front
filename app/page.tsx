@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const phoneDisplay = "709 489 2282";
 const phoneHref = "tel:+17094892282";
@@ -46,6 +47,11 @@ export default function Home() {
               priority
             />
           </a>
+          <div className="topbar__nav">
+            <a href="#services">Services</a>
+            <Link href="/legacy">Legacy</Link>
+            <a href="#visit">Visit</a>
+          </div>
           <a className="topbar__call" href={phoneHref}>
             <span>Call the shop</span>
             <strong>{phoneDisplay}</strong>
@@ -64,8 +70,8 @@ export default function Home() {
             generations.
           </h1>
           <p className="hero__lede">
-            1 Earle Street. Bay doors open Monday morning. Same phone number
-            that ran at the bottom of the newspaper ads.
+            1 Earle Street. Monday - Saturday, year-round. Same phone number
+            since 1971.
           </p>
 
           <dl className="hero__facts">
@@ -88,25 +94,6 @@ export default function Home() {
           </dl>
         </div>
       </header>
-
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee__row">
-          <span>P &amp; T Auto Limited</span>
-          <i />
-          <span>Open since 1969</span>
-          <i />
-          <span>Family owned</span>
-          <i />
-          <span>1 Earle Street</span>
-          <i />
-          <span>Grand Falls-Windsor, NL</span>
-          <i />
-          <span>709 489 2282</span>
-          <i />
-          <span>Bay doors open Monday</span>
-          <i />
-        </div>
-      </div>
 
       <section className="work" id="services" aria-labelledby="work-title">
         <div className="wrap work__grid">
@@ -212,82 +199,10 @@ export default function Home() {
               painted across the cinder block at chest height &mdash; same as
               it was when Orville opened the door.
             </p>
+            <Link className="story__link" href="/legacy">
+              View old ads and clippings
+            </Link>
           </div>
-        </div>
-      </section>
-
-      <section className="archive" id="archive" aria-labelledby="archive-title">
-        <div className="wrap archive__head">
-          <p className="kicker">Old ads and clippings</p>
-          <h2 id="archive-title">Part of the legacy.</h2>
-          <p className="muted">
-            The dealership chapter is closed, but the newspaper ads, articles,
-            and clippings still tell the story of where the shop came from.
-          </p>
-        </div>
-
-        <figure className="archive__wide">
-          <div className="archive__wideImg">
-            <Image
-              src="/assets/photos/image copy 7.png"
-              alt="Full-page 'Deals on Wheels' newspaper ad listing 1967–1971 used vehicles for sale at P&T Auto Limited, Lincoln Road, Grand Falls — including a 1968 Pontiac Station Wagon for $1,450 and a 1969 Ford Torino for $1,395."
-              fill
-              sizes="100vw"
-            />
-          </div>
-          <figcaption>
-            <em>Deals on Wheels</em> &mdash; a used-vehicle page the shop
-            ran in the early 1970s, with Orv Penney&apos;s name on the
-            bottom. A 1968 Pontiac Station Wagon went for $1,450.
-          </figcaption>
-        </figure>
-
-        <div className="wrap archive__row">
-          <figure className="clipping clipping--tall">
-            <div className="clipping__img">
-              <Image
-                src="/assets/photos/image copy 12.png"
-                alt="Penney & Thistle Auto Limited advertisement: 'Your American Motors and Renault Dealers, Rear of Foodland, Lincoln Road, Grand Falls.'"
-                fill
-                loading="eager"
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
-            </div>
-            <figcaption>
-              <strong>1969.</strong> The original name on the door, before
-              the partnership wound down.
-            </figcaption>
-          </figure>
-          <figure className="clipping clipping--tall">
-            <div className="clipping__img">
-              <Image
-                src="/assets/photos/image copy 8.png"
-                alt="'Orv Penney joins American Motors Winning Team' advertisement featuring the AMC Javelin."
-                fill
-                loading="eager"
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
-            </div>
-            <figcaption>
-              <strong>The Javelin years.</strong> AMC ran this when Orv
-              signed on.
-            </figcaption>
-          </figure>
-          <figure className="clipping clipping--wide">
-            <div className="clipping__img">
-              <Image
-                src="/assets/photos/image copy 10.png"
-                alt="Newspaper article: 'New business to open in Windsor commercial-industrial area' announcing P&T Auto's move."
-                fill
-                loading="eager"
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
-            </div>
-            <figcaption>
-              <strong>The move to Windsor.</strong> Crossing the river into
-              the commercial-industrial area.
-            </figcaption>
-          </figure>
         </div>
       </section>
 
@@ -345,8 +260,7 @@ export default function Home() {
               Grand Falls-Windsor.
             </h2>
             <p className="muted">
-              Honestly, easier to just call &mdash; we answer the shop phone
-              during hours.
+              Or call, either way we are happy to help.
             </p>
 
             <div className="visit__lines">

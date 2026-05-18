@@ -90,10 +90,11 @@ h3 {
 
 .hero {
   position: relative;
+  z-index: 1;
   min-height: 760px;
   color: var(--white);
   background: var(--ink);
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
 }
 
@@ -136,7 +137,7 @@ h3 {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 96px;
+  bottom: 0;
   height: 28px;
   z-index: 1;
   background: var(--red);
@@ -146,24 +147,52 @@ h3 {
 }
 
 .topbar {
-  position: relative;
-  z-index: 3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  width: min(100% - 40px, var(--max));
-  margin: 0 auto;
-  padding: 30px 0 0;
+  gap: 20px;
+  width: 100%;
+  padding: 10px max(20px, calc((100vw - var(--max)) / 2));
+  background: rgba(16, 12, 8, 0.4);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.topbar__nav {
+  display: flex;
+  gap: 28px;
+}
+
+.topbar__nav a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-display, "Oswald"), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 200ms ease;
+}
+
+.topbar__nav a:hover {
+  color: var(--orange);
+}
+
+.topbar--solid {
+  background: rgba(16, 12, 8, 0.92);
 }
 
 .brand {
   display: inline-block;
   line-height: 0;
+  transition: transform 300ms ease;
 }
 
 .brand img {
-  width: 320px;
+  width: 198px;
   height: auto;
   display: block;
 }
@@ -172,34 +201,98 @@ h3 {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2px;
-  padding: 10px 18px;
+  gap: 1px;
+  padding: 7px 14px;
   color: var(--white);
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(8px);
-  transition: background 120ms ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 200ms ease;
 }
 
 .topbar__call span {
-  font-size: 0.72rem;
+  font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .topbar__call strong {
   font-family: var(--font-display, "Oswald"), "Arial Narrow", Arial,
     sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.05rem;
   letter-spacing: 0.04em;
+  line-height: 1.05;
 }
 
 .topbar__call:hover,
 .topbar__call:focus-visible {
-  background: rgba(168, 32, 39, 0.85);
+  background: var(--red);
+  border-color: var(--red);
+  transform: translateY(-1px);
   outline: none;
+}
+
+/* ============ REVEAL ANIMATIONS ============ */
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.work__lead,
+.services li,
+.story__portrait,
+.story__body,
+.archive__head,
+.archive__wide,
+.clipping,
+.today__grid figure,
+.visit__grid > * {
+  view-timeline-name: --item-reveal;
+  view-timeline-axis: block;
+  animation-timeline: --item-reveal;
+  animation-name: reveal;
+  animation-range: entry 10% cover 30%;
+  animation-fill-mode: both;
+}
+
+/* Prevent animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .work__lead,
+  .services li,
+  .story__portrait,
+  .story__body,
+  .archive__head,
+  .archive__wide,
+  .clipping,
+  .today__grid figure,
+  .visit__grid > * {
+    animation: none;
+  }
+}
+
+/* ============ IMAGE HOVER EFFECTS ============ */
+
+.today__grid figure img,
+.clipping__img img,
+.archive__wideImg img,
+.story__portraitImg img {
+  transition: transform 600ms cubic-bezier(0.33, 1, 0.68, 1), filter 600ms ease;
+}
+
+.today__grid figure:hover img,
+.clipping:hover .clipping__img img,
+.archive__wide:hover .archive__wideImg img,
+.story__portrait:hover .story__portraitImg img {
+  transform: scale(1.04);
+  filter: contrast(1.1) saturate(1) brightness(0.9);
 }
 
 .hero__inner {
@@ -207,7 +300,7 @@ h3 {
   z-index: 2;
   width: min(100% - 40px, var(--max));
   margin: 0 auto;
-  padding: 96px 0 120px;
+  padding: 83px 0 86px;
 }
 
 .hero__eyebrow {
@@ -253,11 +346,12 @@ h3 {
   display: grid;
   grid-template-columns: minmax(155px, 0.8fr) minmax(260px, 1.1fr) minmax(330px, 1.3fr);
   width: min(100%, 980px);
-  margin: 42px 0 0;
+  margin: 58px 0 0;
   background: var(--paper-bright);
   color: var(--ink);
   border-top: 4px solid var(--orange);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+  transform: translateY(34px);
 }
 
 .hero__facts > div {
@@ -297,40 +391,6 @@ h3 {
 
 .hero__facts a:hover {
   color: var(--red);
-}
-
-/* ============ MARQUEE BAND ============ */
-
-.marquee {
-  background: var(--ink);
-  color: var(--paper-bright);
-  padding: 14px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  border-bottom: 4px solid var(--red);
-  overflow: hidden;
-}
-
-.marquee__row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  width: min(100% - 40px, var(--max));
-  margin: 0 auto;
-  font-family: var(--font-display, "Oswald"), "Arial Narrow", Arial,
-    sans-serif;
-  font-size: 0.95rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.marquee__row i {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--orange);
-  transform: rotate(45deg);
 }
 
 /* ============ WORK ============ */
@@ -454,7 +514,7 @@ h3 {
 
 .story {
   background: var(--paper-bright);
-  padding: 120px 0;
+  padding: 120px 0 54px;
   position: relative;
 }
 
@@ -519,6 +579,28 @@ h3 {
   color: var(--red-ink);
 }
 
+.story__link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+  padding: 10px 14px;
+  color: var(--paper-bright);
+  background: var(--red);
+  font-family: var(--font-display, "Oswald"), "Arial Narrow", Arial,
+    sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.story__link:hover,
+.story__link:focus-visible {
+  background: var(--orange-deep);
+  outline: none;
+}
+
 /* The vertical clipping floated into the story prose like a newspaper
    sidebar — torn-paper feel via offset shadow and slight rotation. */
 .story__clip {
@@ -554,6 +636,37 @@ h3 {
 
 /* ============ ARCHIVE ============ */
 
+.legacyPage {
+  background: var(--paper-deep);
+}
+
+.legacyPage__hero {
+  background: var(--ink);
+  color: var(--paper-bright);
+  border-bottom: 6px solid var(--red);
+}
+
+.legacyPage__intro {
+  padding: 86px 0 78px;
+}
+
+.legacyPage__intro .kicker {
+  color: var(--orange);
+}
+
+.legacyPage__intro h1 {
+  max-width: 12ch;
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  text-transform: uppercase;
+}
+
+.legacyPage__intro p:not(.kicker) {
+  max-width: 58ch;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1.08rem;
+}
+
 .archive {
   background: var(--paper-deep);
   padding: 100px 0 118px;
@@ -563,6 +676,10 @@ h3 {
       transparent 1px
     );
   background-size: 6px 6px;
+}
+
+.archive--page {
+  padding-top: 78px;
 }
 
 .archive__head {
@@ -688,7 +805,7 @@ h3 {
 
 .today {
   background: var(--paper-bright);
-  padding: 110px 0 120px;
+  padding: 28px 0 120px;
 }
 
 .today__head {
@@ -851,16 +968,17 @@ h3 {
   }
 
   .topbar {
-    padding-top: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .brand img {
-    width: 300px;
+    width: 190px;
   }
 
   .hero__inner {
-    padding-top: 74px;
-    padding-bottom: 82px;
+    padding-top: 114px;
+    padding-bottom: 72px;
   }
 
   .hero h1 {
@@ -872,7 +990,7 @@ h3 {
   }
 
   .hero__facts {
-    margin-top: 28px;
+    margin-top: 44px;
   }
 
   .hero__facts > div {
@@ -919,13 +1037,18 @@ h3 {
   }
 
   .topbar {
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
     flex-wrap: wrap;
+    padding: 9px 20px;
+  }
+
+  .topbar__nav {
+    display: none;
   }
 
   .brand img {
-    width: 240px;
+    width: 178px;
   }
 
   .topbar__call strong {
@@ -933,11 +1056,11 @@ h3 {
   }
 
   .hero__inner {
-    padding: 60px 0 0;
+    padding: 72px 0 28px;
   }
 
   .hero__stripe {
-    bottom: 160px;
+    bottom: 0;
     height: 18px;
   }
 
@@ -949,6 +1072,7 @@ h3 {
     grid-template-columns: 1fr;
     width: 100%;
     margin-top: 34px;
+    transform: none;
   }
 
   .hero__facts > div {
@@ -1003,17 +1127,21 @@ h3 {
     width: min(100% - 32px, var(--max));
   }
 
-  .topbar,
   .hero__inner {
     width: min(100% - 32px, var(--max));
   }
 
   .topbar {
-    padding-top: 24px;
+    width: 100%;
+    padding: 6px 16px;
   }
 
   .brand img {
-    width: 240px;
+    width: 150px;
+  }
+
+  .hero__inner {
+    padding-top: 62px;
   }
 
   .topbar__call {
@@ -1060,18 +1188,20 @@ h3 {
     padding-bottom: 70px;
   }
 
+  .story {
+    padding-bottom: 36px;
+  }
+
+  .today {
+    padding-top: 26px;
+  }
+
   .baystrip {
     height: 240px;
   }
 
   .archive__wideImg {
     aspect-ratio: 4 / 3;
-  }
-
-  .marquee__row {
-    font-size: 0.82rem;
-    letter-spacing: 0.12em;
-    gap: 12px;
   }
 
   .visit__phone {
