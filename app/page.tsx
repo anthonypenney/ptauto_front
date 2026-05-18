@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Topbar } from "./Topbar";
 
 const phoneDisplay = "709 489 2282";
 const phoneHref = "tel:+17094892282";
@@ -38,28 +39,7 @@ export default function Home() {
         <div className="hero__veil" aria-hidden="true" />
         <div className="hero__stripe" aria-hidden="true" />
 
-        <nav className="topbar" aria-label="Primary">
-          <a className="brand" href="#top" aria-label="P&T Auto Limited">
-            <Image
-              src="/assets/logos/ptautowhite.png"
-              alt="P&T Auto Limited"
-              width={420}
-              height={114}
-              priority
-              quality={85}
-            />
-          </a>
-          <div className="topbar__nav">
-            <Link href="/">Home</Link>
-            <a href="#services">Services</a>
-            <a href="#visit">Visit</a>
-            <Link href="/legacy">Legacy</Link>
-          </div>
-          <a className="topbar__call" href={phoneHref}>
-            <span>Call the shop</span>
-            <strong>{phoneDisplay}</strong>
-          </a>
-        </nav>
+        <Topbar />
 
         <div className="hero__inner" id="top">
           <p className="hero__eyebrow">

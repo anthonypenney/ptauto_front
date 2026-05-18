@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { Topbar } from "../Topbar";
 import { LegacyArchive } from "./LegacyArchive";
 
-const phoneDisplay = "709 489 2282";
-const phoneHref = "tel:+17094892282";
 const address = "1 Earle Street, Grand Falls-Windsor, NL A2A 2J9";
 
 export const metadata: Metadata = {
@@ -19,28 +17,7 @@ export default function LegacyPage() {
   return (
     <main className="legacyPage">
       <header className="legacyPage__hero">
-        <nav className="topbar topbar--solid" aria-label="Primary">
-          <Link className="brand" href="/" aria-label="P&T Auto Limited home">
-            <Image
-              src="/assets/logos/ptautowhite.png"
-              alt="P&T Auto Limited"
-              width={420}
-              height={114}
-              priority
-              quality={85}
-            />
-          </Link>
-          <div className="topbar__nav">
-            <Link href="/">Home</Link>
-            <Link href="/#services">Services</Link>
-            <Link href="/#visit">Visit</Link>
-            <Link href="/legacy">Legacy</Link>
-          </div>
-          <a className="topbar__call" href={phoneHref}>
-            <span>Call the shop</span>
-            <strong>{phoneDisplay}</strong>
-          </a>
-        </nav>
+        <Topbar solid />
 
         <div className="wrap legacyPage__intro">
           <p className="kicker">Old ads and clippings</p>

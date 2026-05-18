@@ -236,6 +236,137 @@ h3 {
   outline: none;
 }
 
+.topbar__menu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.topbar__menu span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--white);
+}
+
+.topbar__menu:hover,
+.topbar__menu:focus-visible {
+  border-color: var(--orange);
+  outline: none;
+}
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+
+.drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  cursor: pointer;
+}
+
+.drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 88vw);
+  background: rgba(16, 12, 8, 0.98);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 72px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.drawer__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: var(--font-display, "Oswald"), sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.drawer__close:hover,
+.drawer__close:focus-visible {
+  border-color: var(--orange);
+  color: var(--orange);
+  outline: none;
+}
+
+.drawer__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawer__nav a {
+  display: block;
+  padding: 14px 4px;
+  color: var(--white);
+  text-decoration: none;
+  font-family: var(--font-display, "Oswald"), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.drawer__nav a:hover,
+.drawer__nav a:focus-visible {
+  color: var(--orange);
+  outline: none;
+}
+
+.drawer__call {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+  padding: 14px 18px;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--red);
+  border: 1px solid var(--red);
+}
+
+.drawer__call span {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.drawer__call strong {
+  font-family: var(--font-display, "Oswald"), sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+}
+
 /* ============ REVEAL ANIMATIONS ============ */
 
 @keyframes reveal {
@@ -1151,12 +1282,16 @@ h3 {
     display: none;
   }
 
-  .brand img {
-    width: 178px;
+  .topbar__call {
+    display: none;
   }
 
-  .topbar__call strong {
-    font-size: 1.15rem;
+  .topbar__menu {
+    display: flex;
+  }
+
+  .brand img {
+    width: 178px;
   }
 
   .hero__inner {
